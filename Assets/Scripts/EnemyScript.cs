@@ -8,11 +8,11 @@ public class EnemyScript : MonoBehaviour
     public GameObject enemyDeadEffect;
     public float health; 
     public static int EnemiesAlive = 0;
-    void Start() {
+    void Awake() {
         EnemiesAlive++;
     }
     void Update() {
-        //Debug.Log(EnemiesAlive);
+        Debug.Log(EnemiesAlive);
     }
     void OnCollisionEnter2D(Collision2D colInfo){
         // Debug.Log(colInfo.relativeVelocity.magnitude);
