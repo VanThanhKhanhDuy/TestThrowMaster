@@ -11,6 +11,9 @@ public class EnemyScript : MonoBehaviour
     void Start() {
         EnemiesAlive++;
     }
+    void Update() {
+        //Debug.Log(EnemiesAlive);
+    }
     void OnCollisionEnter2D(Collision2D colInfo){
         // Debug.Log(colInfo.relativeVelocity.magnitude);
         if(colInfo.relativeVelocity.magnitude > health){
@@ -20,8 +23,9 @@ public class EnemyScript : MonoBehaviour
     void Die(){
         Instantiate(enemyDeadEffect, transform.position, Quaternion.identity);
         EnemiesAlive--;
-        if(EnemiesAlive <= 0)
+        if(EnemiesAlive <= 0){
             Debug.Log("Level won!");
+        }
         Destroy(gameObject);
     }
 }

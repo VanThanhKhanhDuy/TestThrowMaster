@@ -20,6 +20,12 @@ public class Ball : MonoBehaviour
             else
                 rb.position = mousePos;
         }
+        int aliveEnemies = EnemyScript.EnemiesAlive;
+        Debug.Log("Alive:" + aliveEnemies);
+        if (aliveEnemies <= 0)
+        {
+            StartCoroutine(Won());
+        }
     }
     void OnMouseDown(){
         // Debug.Log("Nhap chuot");
@@ -33,16 +39,41 @@ public class Ball : MonoBehaviour
     }
     IEnumerator Release(){
         yield return new WaitForSeconds(releaseTime);
-        GetComponent<SpringJoint2D>().enabled = false;
-        this.enabled = false;
+            GetComponent<SpringJoint2D>().enabled = false;
+            this.enabled = false;
         yield return new WaitForSeconds(2f);
-            if(nextPlayer != null){
-                nextPlayer.SetActive(true);
-            }
-            else{
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            }
+                CheckNextPlayer();
+    }
+    IEnumerator Won(){
+        yield return new WaitForSeconds(2f);
+            Win();
+    }
+    void CheckWinLose(){
+        int aliveEnemies = EnemyScript.EnemiesAlive;
+        if (aliveEnemies <= 0)
+        {
+            StartCoroutine(Won());
+        }
+        if(nextPlayer == null && aliveEnemies != 0){
+            Lose();
+        }
+    }
+    void Win(){
+        SceneManager.LoadScene("Level2");
 
+    }
+    void Lose(){
+        SceneManager.LoadScene("GameOver");
+    }
+    void CheckNextPlayer(){
+        if(nextPlayer != null){
+            nextPlayer.SetActive(true);
+            CheckWinLose();
+        }
+        else{
+            CheckWinLose();
+        }
+        
     }
 
 }
