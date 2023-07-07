@@ -21,7 +21,7 @@ public class Ball : MonoBehaviour
                 rb.position = mousePos;
         }
         int aliveEnemies = EnemyScript.EnemiesAlive;
-        Debug.Log("Alive:" + aliveEnemies);
+        // Debug.Log("Alive:" + aliveEnemies);
         if (aliveEnemies <= 0)
         {
             StartCoroutine(Won());

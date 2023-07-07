@@ -8,11 +8,13 @@ public class EnemyScript : MonoBehaviour
     public GameObject enemyDeadEffect;
     public float health; 
     public static int EnemiesAlive = 0;
-    void Awake() {
-        EnemiesAlive++;
+    void Awake(){
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        EnemiesAlive = enemies.Length;
+        // EnemiesAlive++;
     }
     void Update() {
-        Debug.Log(EnemiesAlive);
+        // Debug.Log(EnemiesAlive);
     }
     void OnCollisionEnter2D(Collision2D colInfo){
         // Debug.Log(colInfo.relativeVelocity.magnitude);
@@ -23,9 +25,9 @@ public class EnemyScript : MonoBehaviour
     void Die(){
         Instantiate(enemyDeadEffect, transform.position, Quaternion.identity);
         EnemiesAlive--;
-        if(EnemiesAlive <= 0){
-            Debug.Log("Level won!");
-        }
+        // if(EnemiesAlive <= 0){
+        //     Debug.Log("Level won!");
+        // }
         Destroy(gameObject);
     }
 }

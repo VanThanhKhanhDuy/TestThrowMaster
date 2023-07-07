@@ -17,11 +17,8 @@ public class CameraBorder : MonoBehaviour
     }
 
     void CalculateCameraBounds(){
-        // Get the camera's viewport coordinates in world space
         Vector3 cameraMin = mainCamera.ViewportToWorldPoint(new Vector3(0, 0, mainCamera.nearClipPlane));
         Vector3 cameraMax = mainCamera.ViewportToWorldPoint(new Vector3(1, 1, mainCamera.nearClipPlane));
-
-        // Calculate the bounds based on the viewport coordinates
         cameraMinX = cameraMin.x;
         cameraMaxX = cameraMax.x;
         cameraMinY = cameraMin.y;
@@ -29,7 +26,6 @@ public class CameraBorder : MonoBehaviour
     }
 
     void CheckObjectBounds(){
-        // Get all objects in the scene
         GameObject[] objectsInScene = GameObject.FindObjectsOfType<GameObject>();
 
         foreach (GameObject obj in objectsInScene){
