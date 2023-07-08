@@ -12,6 +12,7 @@ public class Ball : MonoBehaviour
     private bool isPressed = false;
 
     private void Update(){
+        int aliveEnemies = EnemyScript.EnemiesAlive;
         if (isPressed)
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -21,11 +22,7 @@ public class Ball : MonoBehaviour
                 rb.position = mousePos;
         }
 
-        int aliveEnemies = EnemyScript.EnemiesAlive;
-        if (aliveEnemies <= 0)
-        {
-            StartCoroutine(Won());
-        }
+        CheckWinLose();
     }
 
     private void OnMouseDown(){
@@ -43,18 +40,16 @@ public class Ball : MonoBehaviour
         yield return new WaitForSeconds(releaseTime);
         GetComponent<SpringJoint2D>().enabled = false;
         this.enabled = false;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         CheckNextPlayer();
-        yield return new WaitForSeconds(1.5f);
-        Destroy(gameObject);
     }
 
-    private IEnumerator Won(){
+    IEnumerator Won(){
         yield return new WaitForSeconds(2f);
         Win();
     }
 
-    private void CheckWinLose(){
+    void CheckWinLose(){
         int aliveEnemies = EnemyScript.EnemiesAlive;
         if (aliveEnemies <= 0)
         {
@@ -64,22 +59,27 @@ public class Ball : MonoBehaviour
         if (nextPlayer == null && aliveEnemies != 0)
         {
             Lose();
+            Debug.Log("lose");
         }
     }
 
-    private void Win(){
+    void Win(){
         SceneMana.SceneManagement();
+        Debug.Log("win");
     }
 
-    private void Lose(){
+    void Lose(){
         SceneMana.GameOver();
     }
 
-    private void CheckNextPlayer(){
+    void CheckNextPlayer(){
         if (nextPlayer != null)
         {
             nextPlayer.SetActive(true);
-        }
+        }else{
         CheckWinLose();
+            Destroy(gameObject);
+        }
+        Destroy(gameObject);
     }
 }
