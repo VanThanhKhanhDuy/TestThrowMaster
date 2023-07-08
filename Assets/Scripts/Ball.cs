@@ -42,7 +42,9 @@ public class Ball : MonoBehaviour
             GetComponent<SpringJoint2D>().enabled = false;
             this.enabled = false;
         yield return new WaitForSeconds(2f);
-                CheckNextPlayer();
+            CheckNextPlayer();
+        yield return new WaitForSeconds(1.5f);
+            Destroy(gameObject);
     }
     IEnumerator Won(){
         yield return new WaitForSeconds(2f);
@@ -59,8 +61,13 @@ public class Ball : MonoBehaviour
         }
     }
     void Win(){
-        SceneManager.LoadScene("Level2");
-
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        if (currentSceneName == "Level1"){
+            SceneManager.LoadScene("Level2");
+        }
+        else if (currentSceneName == "Level2"){
+            SceneManager.LoadScene("VictoryScene");
+        }
     }
     void Lose(){
         SceneManager.LoadScene("GameOver");

@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 3595645117567974186}
   - component: {fileID: 3595645117567974180}
   - component: {fileID: 3595645117567974181}
-  - component: {fileID: 3595645117567974182}
-  - component: {fileID: 3595645117567974183}
   - component: {fileID: 3595645117567974176}
+  - component: {fileID: -6707684211749966525}
+  - component: {fileID: -5040016955269512207}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,49 +120,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: a84803555a0269d43b89dbf1c2100503, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!231 &3595645117567974182
-SpringJoint2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3595645117567974185}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: 0}
-  m_AutoConfigureDistance: 1
-  m_Distance: 5.7270064
-  m_DampingRatio: 0
-  m_Frequency: 1.5
---- !u!114 &3595645117567974183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3595645117567974185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3bcf06abea6d514d87da35be0dd6c7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 3595645117567974181}
-  playerSpawn: {fileID: 0}
-  nextPlayer: {fileID: 0}
-  releaseTime: 0.15
-  maxDragDistance: 2
 --- !u!96 &3595645117567974176
 TrailRenderer:
   serializedVersion: 2
@@ -262,3 +225,27 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &-6707684211749966525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3595645117567974185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 838d8c6d0239599438b7084575798c82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-5040016955269512207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3595645117567974185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1733201db955b14cbe048c040a290b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
