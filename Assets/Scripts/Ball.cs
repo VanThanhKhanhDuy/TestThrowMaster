@@ -45,7 +45,7 @@ public class Ball : MonoBehaviour
     }
 
     IEnumerator Won(){
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         Win();
     }
 
@@ -76,9 +76,6 @@ public class Ball : MonoBehaviour
         if (nextPlayer != null)
         {
             nextPlayer.SetActive(true);
-        }else{
-        CheckWinLose();
-            Destroy(gameObject);
         }
         Destroy(gameObject);
     }
