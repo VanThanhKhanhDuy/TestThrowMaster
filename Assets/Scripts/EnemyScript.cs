@@ -1,34 +1,38 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class EnemyScript : MonoBehaviour
 {
     public GameObject enemyDeadEffect;
     public float health;
-    public static int EnemiesAlive = 0;
+    private static int enemiesAlive = 0;
 
-    void OnEnable()
+    private void OnEnable()
     {
-        EnemiesAlive++;
+        enemiesAlive++;
     }
 
-    void OnDisable()
+    private void OnDisable()
     {
-        EnemiesAlive--;
+        enemiesAlive--;
     }
 
-    void OnCollisionEnter2D(Collision2D colInfo){
+    private void OnCollisionEnter2D(Collision2D colInfo)
+    {
         if (colInfo.relativeVelocity.magnitude > health)
         {
             Die();
         }
     }
 
-    void Die(){
-        Instantiate(enemyDeadEffect, transform.position, Quaternion.identity);
+    private void Die()
+    {
         gameObject.SetActive(false);
-        Debug.Log(EnemiesAlive);
+        Instantiate(enemyDeadEffect, transform.position, Quaternion.identity);
+        Debug.Log(enemiesAlive);
+    }
+
+    public static int EnemiesAlive
+    {
+        get { return enemiesAlive; }
     }
 }

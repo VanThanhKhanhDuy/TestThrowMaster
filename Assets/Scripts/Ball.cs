@@ -1,80 +1,85 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Ball : MonoBehaviour
 {
     public Rigidbody2D rb;
     public Rigidbody2D playerSpawn;
     public GameObject nextPlayer;
-    public float releaseTime = .15f;
+    public float releaseTime = 0.15f;
     public float maxDragDistance = 2f;
     private bool isPressed = false;
-    
-    void Update(){
-        if(isPressed){
+
+    private void Update(){
+        if (isPressed)
+        {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if(Vector3.Distance(mousePos, playerSpawn.position) > maxDragDistance)
+            if (Vector3.Distance(mousePos, playerSpawn.position) > maxDragDistance)
                 rb.position = playerSpawn.position + (mousePos - playerSpawn.position).normalized * maxDragDistance;
             else
                 rb.position = mousePos;
         }
+
         int aliveEnemies = EnemyScript.EnemiesAlive;
-        // Debug.Log("Alive:" + aliveEnemies);
         if (aliveEnemies <= 0)
         {
             StartCoroutine(Won());
         }
     }
-    void OnMouseDown(){
-        // Debug.Log("Nhap chuot");
+
+    private void OnMouseDown(){
         isPressed = true;
         rb.isKinematic = true;
     }
-    void OnMouseUp(){
+
+    private void OnMouseUp(){
         isPressed = false;
         rb.isKinematic = false;
         StartCoroutine(Release());
     }
-    IEnumerator Release(){
+
+    private IEnumerator Release(){
         yield return new WaitForSeconds(releaseTime);
-            GetComponent<SpringJoint2D>().enabled = false;
-            this.enabled = false;
+        GetComponent<SpringJoint2D>().enabled = false;
+        this.enabled = false;
         yield return new WaitForSeconds(2f);
-            CheckNextPlayer();
+        CheckNextPlayer();
         yield return new WaitForSeconds(1.5f);
-            Destroy(gameObject);
+        Destroy(gameObject);
     }
-    IEnumerator Won(){
+
+    private IEnumerator Won(){
         yield return new WaitForSeconds(2f);
-            Win();
+        Win();
     }
-    void CheckWinLose(){
+
+    private void CheckWinLose(){
         int aliveEnemies = EnemyScript.EnemiesAlive;
         if (aliveEnemies <= 0)
         {
             StartCoroutine(Won());
         }
-        if(nextPlayer == null && aliveEnemies != 0){
+
+        if (nextPlayer == null && aliveEnemies != 0)
+        {
             Lose();
         }
     }
-    void Win(){
+
+    private void Win(){
         SceneMana.SceneManagement();
     }
-    void Lose(){
+
+    private void Lose(){
         SceneMana.GameOver();
     }
-    void CheckNextPlayer(){
-        if(nextPlayer != null){
-            nextPlayer.SetActive(true);
-            CheckWinLose();
-        }
-        else{
-            CheckWinLose();
-        }
-        
-    }
 
+    private void CheckNextPlayer(){
+        if (nextPlayer != null)
+        {
+            nextPlayer.SetActive(true);
+        }
+        CheckWinLose();
+    }
 }
