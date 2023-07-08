@@ -61,16 +61,10 @@ public class Ball : MonoBehaviour
         }
     }
     void Win(){
-        string currentSceneName = SceneManager.GetActiveScene().name;
-        if (currentSceneName == "Level1"){
-            SceneManager.LoadScene("Level2");
-        }
-        else if (currentSceneName == "Level2"){
-            SceneManager.LoadScene("VictoryScene");
-        }
+        SceneMana.SceneManagement();
     }
     void Lose(){
-        SceneManager.LoadScene("GameOver");
+        SceneMana.GameOver();
     }
     void CheckNextPlayer(){
         if(nextPlayer != null){
