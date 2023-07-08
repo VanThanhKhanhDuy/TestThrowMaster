@@ -7,12 +7,19 @@ public class Ball : MonoBehaviour
     public Rigidbody2D rb;
     public Rigidbody2D playerSpawn;
     public GameObject nextPlayer;
+    // private PlayerLifeCount playerLifeCount;
     public float releaseTime = 0.15f;
     public float maxDragDistance = 2f;
     private bool isPressed = false;
-
+    // private void Start() {
+    //     playerLifeCount = FindObjectOfType<PlayerLifeCount>();
+    // }
     private void Update(){
         int aliveEnemies = EnemyScript.EnemiesAlive;
+        Movement();
+        CheckWinLose();
+    }
+    private void Movement(){
         if (isPressed)
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -21,10 +28,7 @@ public class Ball : MonoBehaviour
             else
                 rb.position = mousePos;
         }
-
-        CheckWinLose();
     }
-
     private void OnMouseDown(){
         isPressed = true;
         rb.isKinematic = true;
@@ -49,7 +53,7 @@ public class Ball : MonoBehaviour
         Win();
     }
 
-    void CheckWinLose(){
+    private void CheckWinLose(){
         int aliveEnemies = EnemyScript.EnemiesAlive;
         if (aliveEnemies <= 0)
         {
@@ -63,7 +67,7 @@ public class Ball : MonoBehaviour
         }
     }
 
-    void Win(){
+    private void Win(){
         SceneMana.SceneManagement();
         Debug.Log("win");
     }
@@ -72,11 +76,12 @@ public class Ball : MonoBehaviour
         SceneMana.GameOver();
     }
 
-    void CheckNextPlayer(){
+    private void CheckNextPlayer(){
         if (nextPlayer != null)
         {
             nextPlayer.SetActive(true);
         }
+        FindObjectOfType<PlayerLifeCount>().DecreaseLifeCount();
         Destroy(gameObject);
     }
 }
