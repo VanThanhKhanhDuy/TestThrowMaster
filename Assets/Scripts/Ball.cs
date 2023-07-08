@@ -7,13 +7,9 @@ public class Ball : MonoBehaviour
     public Rigidbody2D rb;
     public Rigidbody2D playerSpawn;
     public GameObject nextPlayer;
-    // private PlayerLifeCount playerLifeCount;
     public float releaseTime = 0.15f;
     public float maxDragDistance = 2f;
     private bool isPressed = false;
-    // private void Start() {
-    //     playerLifeCount = FindObjectOfType<PlayerLifeCount>();
-    // }
     private void Update(){
         int aliveEnemies = EnemyScript.EnemiesAlive;
         Movement();
