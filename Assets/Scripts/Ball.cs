@@ -65,10 +65,9 @@ public class Ball : MonoBehaviour
 
     private void Win(){
         SceneMana.SceneManagement();
-        Debug.Log("win");
     }
 
-    void Lose(){
+    private void Lose(){
         SceneMana.GameOver();
     }
 

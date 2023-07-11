@@ -8,7 +8,6 @@ public class EnemyScript : MonoBehaviour
     public static int EnemiesAlive{
         get { return enemiesAlive; }
     }
-
     private void OnEnable(){
         enemiesAlive++;
     }
@@ -16,14 +15,12 @@ public class EnemyScript : MonoBehaviour
     private void OnDisable(){
         enemiesAlive--;
     }
-
     private void OnCollisionEnter2D(Collision2D colInfo){
         if (colInfo.relativeVelocity.magnitude > health)
         {
             Die();
         }
     }
-
     private void Die(){
         gameObject.SetActive(false);
         Instantiate(enemyDeadEffect, transform.position, Quaternion.identity);
