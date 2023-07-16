@@ -11,7 +11,6 @@ public class EnemyScript : MonoBehaviour
     private void OnEnable(){
         enemiesAlive++;
     }
-
     private void OnDisable(){
         enemiesAlive--;
     }

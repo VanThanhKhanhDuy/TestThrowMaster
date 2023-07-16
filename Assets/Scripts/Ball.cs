@@ -7,11 +7,10 @@ public class Ball : MonoBehaviour
     public Rigidbody2D rb;
     public Rigidbody2D playerSpawn;
     public GameObject nextPlayer;
-    public float releaseTime = 0.15f;
-    public float maxDragDistance = 2f;
+    private float releaseTime = 0.15f;
+    private float maxDragDistance = 2f;
     private bool isPressed = false;
     private void Update(){
-        int aliveEnemies = EnemyScript.EnemiesAlive;
         Movement();
         CheckWinLose();
     }
@@ -59,7 +58,6 @@ public class Ball : MonoBehaviour
         if (nextPlayer == null && aliveEnemies != 0)
         {
             Lose();
-            Debug.Log("lose");
         }
     }
 
