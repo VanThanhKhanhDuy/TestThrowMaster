@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "705758768753",
+    "firebase_url": "https://throw-master-20ab8-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "throw-master-20ab8",
+    "storage_bucket": "throw-master-20ab8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:705758768753:android:51e7ea8264844af88ff5d0",
+        "android_client_info": {
+          "package_name": "com.throwmaster.firebasedb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "705758768753-rfjvds4tqsk2s7knrtfbha73061lkkav.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAq-xg2tyhcqUPtklsmv9P4D6MhY4zfgfc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "705758768753-rfjvds4tqsk2s7knrtfbha73061lkkav.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
