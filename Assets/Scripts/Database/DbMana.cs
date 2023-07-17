@@ -14,6 +14,7 @@ public class DbMana : MonoBehaviour
         reference = FirebaseDatabase.DefaultInstance.RootReference;
     }
     public void saveData(){
+        SceneMana.GoToMenu();
         User user = new User();
         user.UserName = userName.text;
         string json = JsonUtility.ToJson(user);
