@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/VictoryScene.unity
     guid: 30469217d84124b4f8e05490616958d2
+  - enabled: 1
+    path: Assets/Scenes/ScoreBoard.unity
+    guid: 1ddb40852a4af3542b4dba3539e72585
   m_configObjects: {}

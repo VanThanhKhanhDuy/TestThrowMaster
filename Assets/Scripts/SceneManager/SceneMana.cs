@@ -10,6 +10,7 @@ public class SceneMana : MonoBehaviour
         public const string VictoryScene = "VictoryScene";
         public const string Menu = "Menu";
         public const string GameOver = "GameOver";
+        public const string ScoreBoard = "ScoreBoard";
     }
 
     public static void SceneManagement()
@@ -43,5 +44,9 @@ public class SceneMana : MonoBehaviour
     public static void GameOver()
     {
         SceneManager.LoadScene(SceneNames.GameOver);
+    }
+    public static void GoToScoreBoard()
+    {
+        SceneManager.LoadScene(SceneNames.ScoreBoard);
     }
 }
