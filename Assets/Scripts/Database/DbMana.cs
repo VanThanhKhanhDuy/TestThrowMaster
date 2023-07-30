@@ -29,31 +29,4 @@ public class DbMana : MonoBehaviour
             }
         });
     }
-    public void ReadData(){
-         reference = FirebaseDatabase.DefaultInstance.RootReference;
-
-        // Assuming you have a node called "Users" in your Firebase Realtime Database
-        string userId = "YOUR_USER_ID"; // Replace this with the actual user ID
-
-        // Attach a listener to read the data at the specified user's node
-        reference.Child("Users").Child(userId).GetValueAsync().ContinueWithOnMainThread(task =>
-        {
-            if (task.IsFaulted)
-            {
-                Debug.LogError("Error reading data: " + task.Exception);
-                return;
-            }
-
-            if (task.IsCompleted)
-            {
-                DataSnapshot snapshot = task.Result;
-
-                // Deserialize the data into a User object
-                User user = JsonUtility.FromJson<User>(snapshot.GetRawJsonValue());
-
-                // Now you have the User object with the UserName property
-                Debug.Log("User Name: " + user.UserName);
-            }
-        });
-    }
 }
